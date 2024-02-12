@@ -1,7 +1,8 @@
-import React from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material';
+import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
 
-import HeroBannerImage from '../assets/images/banner.png'
+import HeroBannerImage from '../assets/images/banner.jpg';
+import { ForkRight } from '@mui/icons-material';
 
 const HeroBanner = () => {
     return (
@@ -23,24 +24,39 @@ const HeroBanner = () => {
             <Typography fontSize={22} lineHeight="35px" mb={4}>
                 Check out the most effective exercises
             </Typography>
-            <Button variant="contained" color="error" href=" #exercises"
+            <Button variant="contained" color="error" href="#exercises"
                 sx={{ backgroundColor: 'ff2625', padding: '10px' }}
             >Explore Exercises
             </Button>
             <Typography
                 fontWeight={600}
-                color="FF2625"
+                color="#FF2625"
                 sx={{
                     opacity: 0.1,
-                    display: { lg: 'block', md: 'block', sm: 'block', xs: 'none' }
+                    display: { lg: 'block', md: 'block', sm: 'block', xs: 'none' },
+                    mt: '55px'
                 }}
                 fontSize="200px"
             >
                 Exercise
             </Typography>
-            <img src={HeroBannerImage} alt="banner" className="hero-banner-img" />
+            <Box
+                component="img"
+                src={HeroBannerImage}
+                alt="banner"
+                sx={{
+                    width: '50%',
+                    mx: 'auto',
+                    height: 'auto',
+                    display: 'block',
+                    px: '70px',
+                    position: 'relative',
+                    bottom: '910px',
+                    left: '25%'
+                }}
+            />
         </Box >
-    )
+    );
 }
 
-export default HeroBanner
+export default HeroBanner;
