@@ -1,10 +1,13 @@
 import React from 'react';
 import { Stack, Typography } from '@mui/material';
-import Icon from '../assets/icons/gym.png';
 
 const BodyPart = ({ item, setBodyPart, bodyPart }) => {
-    console.log(item);
-    item.toLowerCase();
+    const extractName = path => path.split('/').pop().split('.')[0].split(/[\d-_]+/)[0]
+                                .replace(/_/g, ' ').replace(/-/g, ' ')
+                                .split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+    const displayName = extractName(item);
+
     return (
         <Stack
             type="button"
@@ -22,15 +25,15 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
             }}
             onClick={() => {
                 setBodyPart(item);
-                window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' })
+                window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
             }}
         >
-            <img src={Icon} alt="dumbbell" style={{ width: '40px', height: '40px' }} />
-            <Typography fontSize="12px" fontWeight="bold" color="#3A1212" textTransform="capitalize">{item.toLowerCase()}
-            <img src={item} style={{width: '2.5rem'}}/>
+            <img src={item} alt="Body part icon" style={{ width: '80px', height: '80px' }} />
+            <Typography fontSize="24px" fontWeight="bold" color="#3A1212" textTransform="capitalize">
+                {displayName}
             </Typography>
         </Stack>
-    )
-}
+    );
+};
 
-export default BodyPart
+export default BodyPart;
