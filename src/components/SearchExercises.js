@@ -4,9 +4,12 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar';
 
-import image1 from '../assets/images/1.jpg'
-import image2 from '../assets/images/2.jpg'
-
+import image1 from '../assets/images/chest.png'
+import image2 from '../assets/images/tricep.png'
+import image3 from '../assets/images/back.png'
+import image4 from '../assets/images/bicep.png'
+import image5 from '../assets/images/shoulder.png'
+import image6 from '../assets/images/leg.png'
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     const [search, setSearch] = useState('');
@@ -19,7 +22,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
             // setBodyParts(['all', ...bodyPartsData]);
             const images = [
-                image1,image2
+                image1, image2, image3, image4, image5, image6
             ]
             setBodyParts(images)
         }

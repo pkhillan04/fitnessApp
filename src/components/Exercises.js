@@ -5,8 +5,8 @@ import { Box, Stack, Typography } from '@mui/material/';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import ExerciseCard from './ExerciseCard';
 
-import image1 from '../assets/images/1.jpg'
-import image2 from '../assets/images/2.jpg'
+import image1 from '../assets/images/back.png'
+import image2 from '../assets/images/chest.png'
 
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -33,10 +33,10 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
             }
 
             const images = [
-                image1,image2
-                        ]
+                image1, image2
+            ]
 
-            
+
 
             setExercises(images);
         }

@@ -21,6 +21,14 @@ const Detail = ({ exerciseDetail }) => {
       icon: EquipmentImage,
       name: equipment,
     },
+    {
+      icon: BodyPartImage,
+      name: bodyPart,
+    },
+    {
+      icon: TargetImage,
+      name: target,
+    }
   ]
 
   return (
