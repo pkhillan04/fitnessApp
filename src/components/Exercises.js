@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { Box, Stack, Typography } from '@mui/material/';
 
-import { exerciseOptions, fetchData } from '../utils/fetchData';
+import { localApiOptions, fetchData } from '../utils/fetchData';
 import ExerciseCard from './ExerciseCard';
 
 import image1 from '../assets/images/back.png'
@@ -24,25 +24,25 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 
     useEffect(() => {
         const fetchExercisesData = async () => {
-            let exercisesData = [];
-
-            if (bodyPart === 'all') {
-                exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-            } else {
-                exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}', exerciseOptions);
+            try {
+                let exercisesData = [];
+    
+                if (bodyPart === 'all') {
+                    exercisesData = await fetchData('http://localhost:4000/api/exercises', localApiOptions);
+                } else {
+                    exercisesData = await fetchData(`http://localhost:4000/api/exercises/bodyPart/${bodyPart}`, localApiOptions);
+                }
+    
+                setExercises(exercisesData);
+            } catch (error) {
+                console.error("Failed to fetch exercises:", error);
             }
-
-            const images = [
-                image1, image2
-            ]
-
-
-
-            setExercises(images);
-        }
-
+        };
+    
         fetchExercisesData();
     }, [bodyPart]);
+    
+    
 
     return (
         <Box id="exercises"
