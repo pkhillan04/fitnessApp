@@ -4,13 +4,6 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import { localApiOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar';
 
-import image1 from '../assets/images/chest.png'
-import image2 from '../assets/images/tricep.png'
-import image3 from '../assets/images/back.png'
-import image4 from '../assets/images/bicep.png'
-import image5 from '../assets/images/shoulder.png'
-import image6 from '../assets/images/leg.png'
-
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     const [search, setSearch] = useState('');
 
@@ -19,29 +12,21 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     useEffect(() => {
         const fetchExercisesData = async () => {
             const bodyPartsData = await fetchData('http://localhost:4000/api/exercises/bodyPartList', localApiOptions);
-
-            // setBodyParts(['all', ...bodyPartsData]);
-            const images = [
-                image1, image2, image3, image4, image5, image6
-            ]
-            setBodyParts(images)
+            setBodyParts(['all', ...bodyPartsData]);
         }
 
         fetchExercisesData();
     }, [])
 
-
     const handleSearch = async () => {
         if (search) {
             const exercisesData = await fetchData('http://localhost:4000/api/exercises', localApiOptions);
-
             const searchedExercises = exercisesData.filter(
                 (exercise) => exercise.name.toLowerCase().includes(search)
                     || exercise.target.toLowerCase().includes(search)
                     || exercise.equipment.toLowerCase().includes(search)
                     || exercise.bodyPart.toLowerCase().includes(search)
             );
-
             setSearch('');
             setExercises(searchedExercises);
         }
@@ -71,7 +56,6 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
                     placeholder="Search Exercises"
                     type="text"
                 />
-
                 <Button className="search-btn"
                     sx={{
                         bgcolor: '#FF2625',

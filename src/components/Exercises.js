@@ -5,9 +5,6 @@ import { Box, Stack, Typography } from '@mui/material/';
 import { localApiOptions, fetchData } from '../utils/fetchData';
 import ExerciseCard from './ExerciseCard';
 
-import image1 from '../assets/images/back.png'
-import image2 from '../assets/images/chest.png'
-
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const exercisesPerPage = 9;
